@@ -91,3 +91,20 @@ INSERT INTO sd_orden_recojo(id_conductor, id_sede_cliente, id_producto_venta, id
 INSERT INTO sd_orden_recojo(id_conductor, id_sede_cliente, id_producto_venta, id_estado_orden, id_tracto, id_carreta, cantidad, activo, fecha_registro, usuario_registro) values (2,8,6,1,5,6,1350,1,sysdate(),'admin');
 INSERT INTO sd_orden_recojo(id_conductor, id_sede_cliente, id_producto_venta, id_estado_orden, id_tracto, id_carreta, cantidad, activo, fecha_registro, usuario_registro) values (4,6,3,1,3,4,1750,1,sysdate(),'admin');
 
+-- sd_planta
+
+INSERT INTO sd_planta (nombre, direccion,distrito,capacidad_maxima, ubicacion_x1,ubicacion_x2, ubicacion_y1,ubicacion_y2, limite_inf_pesaje_antes,limite_sup_pesaje_antes, limite_inf_pesaje_despues, limite_sup_pesaje_despues,activo, fecha_registro, usuario_registro) VALUES ('Planta Lima Sur','Av. Las Malvinas 4589','San Juan de Miraflores',60, 10.10, 11.10, 24.5, 26.5, 300, 300, 0, 20, 1,sysdate(),'admin');
+
+-- sd_estado_despacho
+
+INSERT INTO sd_estado_despacho (nombre) VALUES ('En cola de revision');
+INSERT INTO sd_estado_despacho (nombre) VALUES ('En revision');
+INSERT INTO sd_estado_despacho (nombre) VALUES ('Revision con incidencia');
+INSERT INTO sd_estado_despacho (nombre) VALUES ('En peso vacio');
+INSERT INTO sd_estado_despacho (nombre) VALUES ('Peso vacio con incidencia');
+INSERT INTO sd_estado_despacho (nombre) VALUES ('En cola de carga');
+INSERT INTO sd_estado_despacho (nombre) VALUES ('Cargando productos');
+INSERT INTO sd_estado_despacho (nombre) VALUES ('En peso lleno');
+INSERT INTO sd_estado_despacho (nombre) VALUES ('Revision de carga');
+INSERT INTO sd_estado_despacho (nombre) VALUES ('En salida');
+INSERT INTO sd_estado_despacho (nombre) VALUES ('Terminado');
