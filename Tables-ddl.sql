@@ -3,14 +3,14 @@ DROP TABLE IF EXISTS sd_tipo_pesaje;
 DROP TABLE IF EXISTS sd_zona_balanza;
 DROP TABLE IF EXISTS sd_cola_canal;
 DROP TABLE IF EXISTS sd_canal_carga;
-DROP TABLE IF EXISTS sd_despacho;
-DROP TABLE IF EXISTS sd_estado_despacho;
 DROP TABLE IF EXISTS sd_turno_incidencia;
 DROP TABLE IF EXISTS sd_incidencia;
 DROP TABLE IF EXISTS sd_turno_revision;
 DROP TABLE IF EXISTS sd_punto_control;
-DROP TABLE IF EXISTS sd_planta;
 DROP TABLE IF EXISTS sd_revisor;
+DROP TABLE IF EXISTS sd_despacho;
+DROP TABLE IF EXISTS sd_estado_despacho;
+DROP TABLE IF EXISTS sd_planta;
 DROP TABLE IF EXISTS sd_orden_recojo;
 DROP TABLE IF EXISTS sd_estado_orden;
 DROP TABLE IF EXISTS sd_vehiculo;
@@ -182,9 +182,9 @@ CREATE TABLE sd_vehiculo (
     ancho DOUBLE NOT NULL,
     altura DOUBLE NOT NULL,
     peso DOUBLE NOT NULL,
-    fecha_venc_circulacion DATETIME NOT NULL,
+    fecha_venc_circulacion DATE NOT NULL,
     tiene_tarjeta_propiedad INT NOT NULL,
-    fecha_venc_soat DATETIME NULL,
+    fecha_venc_soat DATE NULL,
     activo INT NOT NULL,
     fecha_registro DATETIME NOT NULL,
     usuario_registro VARCHAR(100) NOT NULL,
@@ -268,6 +268,46 @@ CREATE TABLE sd_planta (
     PRIMARY KEY(id_planta)
 );
 
+CREATE TABLE sd_estado_despacho (
+    id_estado_despacho INT NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(100) NOT NULL,
+    PRIMARY KEY(id_estado_despacho)
+);
+
+CREATE TABLE sd_despacho (
+    id_despacho INT NOT NULL AUTO_INCREMENT,
+    id_planta INT NOT NULL,
+    id_orden_recojo INT NOT NULL,
+    id_estado_despacho INT NOT NULL,
+    hora_inicio_despacho DATETIME NOT NULL,
+    hora_fin_despacho DATETIME NULL,
+    valor_pesaje_antes DOUBLE NULL,
+    valor_pesaje_despues DOUBLE NULL,
+    hora_inicio_carga DOUBLE NULL,
+    hora_fin_carga DOUBLE NULL,
+    activo INT NOT NULL,
+    fecha_registro DATETIME NOT NULL,
+    usuario_registro VARCHAR(100) NOT NULL,
+    fecha_actualizacion DATETIME NULL,
+    usuario_actualizacion VARCHAR(100) NULL,
+    PRIMARY KEY(id_despacho),
+    CONSTRAINT des_pla_fk
+        FOREIGN KEY (id_planta)
+        REFERENCES sd_planta (id_planta)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION,
+    CONSTRAINT des_orc_fk
+        FOREIGN KEY (id_orden_recojo)
+        REFERENCES sd_orden_recojo (id_orden_recojo)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION,
+    CONSTRAINT des_esd_fk
+        FOREIGN KEY (id_estado_despacho)
+        REFERENCES sd_estado_despacho (id_estado_despacho)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION
+);
+
 CREATE TABLE sd_punto_control (
     id_punto_control INT NOT NULL AUTO_INCREMENT,
     id_planta INT NOT NULL,
@@ -287,8 +327,9 @@ CREATE TABLE sd_punto_control (
 
 CREATE TABLE sd_turno_revision (
     id_turno_revision INT NOT NULL AUTO_INCREMENT,
-    id_revisor INT NOT NULL,
-    id_punto_control INT NOT NULL,
+    id_despacho INT NOT NULL,
+    id_revisor INT NULL,
+    id_punto_control INT NULL,
     turno_dia INT NOT NULL,
     hora_inicio DATETIME NULL,
     hora_fin DATETIME NULL,
@@ -299,6 +340,11 @@ CREATE TABLE sd_turno_revision (
     fecha_actualizacion DATETIME NULL,
     usuario_actualizacion VARCHAR(100) NULL,
     PRIMARY KEY(id_turno_revision),
+    CONSTRAINT trv_des_fk
+        FOREIGN KEY (id_despacho)
+        REFERENCES sd_despacho (id_despacho)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION,
     CONSTRAINT trv_rev_fk
         FOREIGN KEY (id_revisor)
         REFERENCES sd_revisor (id_revisor)
@@ -340,52 +386,6 @@ CREATE TABLE sd_turno_incidencia (
     CONSTRAINT tin_pct_fk
         FOREIGN KEY (id_incidencia)
         REFERENCES sd_incidencia (id_incidencia)
-        ON DELETE NO ACTION
-        ON UPDATE NO ACTION
-);
-
-CREATE TABLE sd_estado_despacho (
-    id_estado_despacho INT NOT NULL AUTO_INCREMENT,
-    nombre VARCHAR(100) NOT NULL,
-    PRIMARY KEY(id_estado_despacho)
-);
-
-CREATE TABLE sd_despacho (
-    id_despacho INT NOT NULL AUTO_INCREMENT,
-    id_planta INT NOT NULL,
-    id_orden_recojo INT NOT NULL,
-    id_estado_despacho INT NOT NULL,
-    id_turno_revision INT NULL,
-    hora_inicio_despacho INT NOT NULL,
-    hora_fin_despacho INT NULL,
-    valor_pesaje_antes DOUBLE NULL,
-    valor_pesaje_despues DOUBLE NULL,
-    hora_inicio_carga DOUBLE NULL,
-    hora_fin_carga DOUBLE NULL,
-    activo INT NOT NULL,
-    fecha_registro DATETIME NOT NULL,
-    usuario_registro VARCHAR(100) NOT NULL,
-    fecha_actualizacion DATETIME NULL,
-    usuario_actualizacion VARCHAR(100) NULL,
-    PRIMARY KEY(id_despacho),
-    CONSTRAINT des_pla_fk
-        FOREIGN KEY (id_planta)
-        REFERENCES sd_planta (id_planta)
-        ON DELETE NO ACTION
-        ON UPDATE NO ACTION,
-    CONSTRAINT des_orc_fk
-        FOREIGN KEY (id_orden_recojo)
-        REFERENCES sd_orden_recojo (id_orden_recojo)
-        ON DELETE NO ACTION
-        ON UPDATE NO ACTION,
-    CONSTRAINT des_esd_fk
-        FOREIGN KEY (id_estado_despacho)
-        REFERENCES sd_estado_despacho (id_estado_despacho)
-        ON DELETE NO ACTION
-        ON UPDATE NO ACTION,
-    CONSTRAINT des_trv_fk
-        FOREIGN KEY (id_turno_revision)
-        REFERENCES sd_turno_revision (id_turno_revision)
         ON DELETE NO ACTION
         ON UPDATE NO ACTION
 );
