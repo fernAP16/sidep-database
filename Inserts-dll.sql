@@ -72,12 +72,12 @@ INSERT INTO sd_unidad(nombre, activo, fecha_registro, usuario_registro) VALUES (
 INSERT INTO sd_unidad(nombre, activo, fecha_registro, usuario_registro) VALUES ('pallets',1,sysdate(),'admin');
 
 -- sd_producto_venta
-INSERT INTO sd_producto_venta (id_producto, id_marca, id_unidad, stock_actual, activo, fecha_registro, usuario_registro) VALUES (1,1,1,10000,1,sysdate(),'admin');
-INSERT INTO sd_producto_venta (id_producto, id_marca, id_unidad, stock_actual, activo, fecha_registro, usuario_registro) VALUES (1,2,2,15000,1,sysdate(),'admin');
-INSERT INTO sd_producto_venta (id_producto, id_marca, id_unidad, stock_actual, activo, fecha_registro, usuario_registro) VALUES (2,3,3,12000,1,sysdate(),'admin');
-INSERT INTO sd_producto_venta (id_producto, id_marca, id_unidad, stock_actual, activo, fecha_registro, usuario_registro) VALUES (2,5,3,18000,1,sysdate(),'admin');
-INSERT INTO sd_producto_venta (id_producto, id_marca, id_unidad, stock_actual, activo, fecha_registro, usuario_registro) VALUES (3,4,4,8000,1,sysdate(),'admin');
-INSERT INTO sd_producto_venta (id_producto, id_marca, id_unidad, stock_actual, activo, fecha_registro, usuario_registro) VALUES (3,6,4,13500,1,sysdate(),'admin');
+INSERT INTO sd_producto_venta (id_producto, id_marca, id_unidad, peso, stock_actual, activo, fecha_registro, usuario_registro) VALUES (1,1,1,42.5, 10000,1,sysdate(),'admin');
+INSERT INTO sd_producto_venta (id_producto, id_marca, id_unidad, peso, stock_actual, activo, fecha_registro, usuario_registro) VALUES (1,2,2,52.5, 15000,1,sysdate(),'admin');
+INSERT INTO sd_producto_venta (id_producto, id_marca, id_unidad, peso, stock_actual, activo, fecha_registro, usuario_registro) VALUES (2,3,3,5, 12000,1,sysdate(),'admin');
+INSERT INTO sd_producto_venta (id_producto, id_marca, id_unidad, peso, stock_actual, activo, fecha_registro, usuario_registro) VALUES (2,5,3,3.5, 18000,1,sysdate(),'admin');
+INSERT INTO sd_producto_venta (id_producto, id_marca, id_unidad, peso, stock_actual, activo, fecha_registro, usuario_registro) VALUES (3,4,4,8, 8000,1,sysdate(),'admin');
+INSERT INTO sd_producto_venta (id_producto, id_marca, id_unidad, peso, stock_actual, activo, fecha_registro, usuario_registro) VALUES (3,6,4,9, 13500,1,sysdate(),'admin');
 
 -- sd_tipo_vehiculo
 INSERT INTO sd_tipo_vehiculo (id_tipo_vehiculo, nombre) VALUES (1,'tracto');
