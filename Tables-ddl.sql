@@ -144,6 +144,7 @@ CREATE TABLE sd_producto_venta (
     id_producto INT NOT NULL,
     id_marca INT NOT NULL,
     id_unidad INT NOT NULL,
+    peso_unidad DOUBLE NOT NULL,
     stock_actual INT NOT NULL,
     activo INT NOT NULL,
     fecha_registro DATETIME NOT NULL,
