@@ -136,10 +136,10 @@ INSERT INTO sd_orden_recojo(id_conductor, id_sede_cliente, id_producto_venta, id
 INSERT INTO sd_orden_recojo(id_conductor, id_sede_cliente, id_producto_venta, id_estado_orden, id_tracto, id_carreta, cantidad, activo, fecha_registro, usuario_registro) values (3,8,6,2,5,6,1350,1,sysdate(),'admin');
 INSERT INTO sd_orden_recojo(id_conductor, id_sede_cliente, id_producto_venta, id_estado_orden, id_tracto, id_carreta, cantidad, activo, fecha_registro, usuario_registro) values (3,6,3,1,3,4,1750,1,sysdate(),'admin');
 INSERT INTO sd_orden_recojo(id_conductor, id_sede_cliente, id_producto_venta, id_estado_orden, id_tracto, id_carreta, cantidad, activo, fecha_registro, usuario_registro) values (3,1,2,1,1,6,800,1,sysdate(),'admin');
-INSERT INTO sd_orden_recojo(id_conductor, id_sede_cliente, id_producto_venta, id_estado_orden, id_tracto, id_carreta, cantidad, activo, fecha_registro, usuario_registro) values (4,2,4,2,3,2,1600,1,sysdate(),'admin');
-INSERT INTO sd_orden_recojo(id_conductor, id_sede_cliente, id_producto_venta, id_estado_orden, id_tracto, id_carreta, cantidad, activo, fecha_registro, usuario_registro) values (5,5,1,2,5,2,825,1,sysdate(),'admin');
+INSERT INTO sd_orden_recojo(id_conductor, id_sede_cliente, id_producto_venta, id_estado_orden, id_tracto, id_carreta, cantidad, activo, fecha_registro, usuario_registro) values (4,2,4,1,3,2,1600,1,sysdate(),'admin');
+INSERT INTO sd_orden_recojo(id_conductor, id_sede_cliente, id_producto_venta, id_estado_orden, id_tracto, id_carreta, cantidad, activo, fecha_registro, usuario_registro) values (5,5,1,1,5,2,825,1,sysdate(),'admin');
 INSERT INTO sd_orden_recojo(id_conductor, id_sede_cliente, id_producto_venta, id_estado_orden, id_tracto, id_carreta, cantidad, activo, fecha_registro, usuario_registro) values (5,4,3,1,1,6,1700,1,sysdate(),'admin');
-INSERT INTO sd_orden_recojo(id_conductor, id_sede_cliente, id_producto_venta, id_estado_orden, id_tracto, id_carreta, cantidad, activo, fecha_registro, usuario_registro) values (6,1,1,2,3,4,750,1,sysdate(),'admin');
+INSERT INTO sd_orden_recojo(id_conductor, id_sede_cliente, id_producto_venta, id_estado_orden, id_tracto, id_carreta, cantidad, activo, fecha_registro, usuario_registro) values (6,1,1,1,3,4,750,1,sysdate(),'admin');
 INSERT INTO sd_orden_recojo(id_conductor, id_sede_cliente, id_producto_venta, id_estado_orden, id_tracto, id_carreta, cantidad, activo, fecha_registro, usuario_registro) values (6,4,1,1,5,6,680,1,sysdate(),'admin');
 INSERT INTO sd_orden_recojo(id_conductor, id_sede_cliente, id_producto_venta, id_estado_orden, id_tracto, id_carreta, cantidad, activo, fecha_registro, usuario_registro) values (7,6,5,1,1,4,1350,1,sysdate(),'admin');
 INSERT INTO sd_orden_recojo(id_conductor, id_sede_cliente, id_producto_venta, id_estado_orden, id_tracto, id_carreta, cantidad, activo, fecha_registro, usuario_registro) values (8,3,4,1,3,2,1350,1,sysdate(),'admin');
@@ -175,9 +175,6 @@ INSERT INTO sd_estado_despacho (nombre) VALUES ('Terminado');
 INSERT INTO sd_despacho (id_planta, id_orden_recojo, id_estado_despacho, hora_inicio_despacho, activo, fecha_registro, usuario_registro) VALUES (1, 1, 1, now(), 1, sysdate(), 'admin');
 INSERT INTO sd_despacho (id_planta, id_orden_recojo, id_estado_despacho, hora_inicio_despacho, activo, fecha_registro, usuario_registro) VALUES (1, 4, 1, now(), 1, sysdate(), 'admin');
 INSERT INTO sd_despacho (id_planta, id_orden_recojo, id_estado_despacho, hora_inicio_despacho, activo, fecha_registro, usuario_registro) VALUES (1, 7, 1, now(), 1, sysdate(), 'admin');
-INSERT INTO sd_despacho (id_planta, id_orden_recojo, id_estado_despacho, hora_inicio_despacho, activo, fecha_registro, usuario_registro) VALUES (1, 10, 1, now(), 1, sysdate(), 'admin');
-INSERT INTO sd_despacho (id_planta, id_orden_recojo, id_estado_despacho, hora_inicio_despacho, activo, fecha_registro, usuario_registro) VALUES (1, 11, 1, now(), 1, sysdate(), 'admin');
-INSERT INTO sd_despacho (id_planta, id_orden_recojo, id_estado_despacho, hora_inicio_despacho, activo, fecha_registro, usuario_registro) VALUES (1, 13, 1, now(), 1, sysdate(), 'admin');
 
 -- sd_punto_control
 INSERT INTO sd_punto_control (id_planta, codigo, activo, fecha_registro, usuario_registro) VALUES (1, 'C1',1,sysdate(),'admin');
@@ -202,4 +199,15 @@ INSERT INTO sd_incidencia (nombre, activo, usuario_registro, fecha_registro) VAL
 INSERT INTO sd_incidencia (nombre, activo, usuario_registro, fecha_registro) VALUES ('No contar con EPP', 1, 'admin', sysdate());
 INSERT INTO sd_incidencia (nombre, activo, usuario_registro, fecha_registro) VALUES ('No contar con botiquín', 1, 'admin', sysdate());
 INSERT INTO sd_incidencia (nombre, activo, usuario_registro, fecha_registro) VALUES ('No contar con extintor', 1, 'admin', sysdate());
+
+-- sd_zona_balanza
+INSERT INTO sd_zona_balanza (id_planta, codigo, qr_fisico, contrasena, activo, usuario_registro, fecha_registro) VALUES (1,'B1', 'FJSIDLFMSDL', 'balanza1', 1, 'admin', sysdate());
+INSERT INTO sd_zona_balanza (id_planta, codigo, qr_fisico, contrasena, activo, usuario_registro, fecha_registro) VALUES (1,'B2', 'FMESIOLFMN', 'balanza2', 1, 'admin', sysdate());
+INSERT INTO sd_zona_balanza (id_planta, codigo, qr_fisico, contrasena, activo, usuario_registro, fecha_registro) VALUES (1,'B3', 'DEMAIFLSKNE', 'balanza3', 1, 'admin', sysdate());
+INSERT INTO sd_zona_balanza (id_planta, codigo, qr_fisico, contrasena, activo, usuario_registro, fecha_registro) VALUES (1,'B4', 'MFEISKLFESMF', 'balanza4', 1, 'admin', sysdate());
+INSERT INTO sd_zona_balanza (id_planta, codigo, qr_fisico, contrasena, activo, usuario_registro, fecha_registro) VALUES (1,'B5', 'FNMISLKFSE', 'balanza5', 1, 'admin', sysdate());
+
+-- sd_tipo_pesaje
+INSERT INTO sd_tipo_pesaje (id_tipo_pesaje, nombre) VALUES (1, 'Pesaje vacío');
+INSERT INTO sd_tipo_pesaje (id_tipo_pesaje, nombre) VALUES (2, 'Pesaje lleno');
 
