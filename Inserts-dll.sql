@@ -206,8 +206,8 @@ INSERT INTO sd_zona_balanza (id_planta, codigo, qr_fisico, contrasena, activo, u
 INSERT INTO sd_zona_balanza (id_planta, codigo, qr_fisico, contrasena, activo, usuario_registro, fecha_registro) VALUES (1,'B3', 'DEMAIFLSKNE', 'balanza3', 1, 'admin', sysdate());
 INSERT INTO sd_zona_balanza (id_planta, codigo, qr_fisico, contrasena, activo, usuario_registro, fecha_registro) VALUES (1,'B4', 'MFEISKLFESMF', 'balanza4', 1, 'admin', sysdate());
 INSERT INTO sd_zona_balanza (id_planta, codigo, qr_fisico, contrasena, activo, usuario_registro, fecha_registro) VALUES (1,'B5', 'FNMISLKFSE', 'balanza5', 1, 'admin', sysdate());
-INSERT INTO sd_zona_balanza (id_planta, codigo, qr_fisico, contrasena, activo, usuario_registro, fecha_registro) VALUES (1,'B6', 'MFEISNO', 'balanza6', 1, 'admin', sysdate());
-INSERT INTO sd_zona_balanza (id_planta, codigo, qr_fisico, contrasena, activo, usuario_registro, fecha_registro) VALUES (1,'B7', 'MFIESLKFNS', 'balanza7', 1, 'admin', sysdate());
-INSERT INTO sd_zona_balanza (id_planta, codigo, qr_fisico, contrasena, activo, usuario_registro, fecha_registro) VALUES (1,'B8', 'JGIKDFMOB', 'balanza8', 1, 'admin', sysdate());
-INSERT INTO sd_zona_balanza (id_planta, codigo, qr_fisico, contrasena, activo, usuario_registro, fecha_registro) VALUES (1,'B9', 'KSMLFNSDK', 'balanza9', 1, 'admin', sysdate());
-INSERT INTO sd_zona_balanza (id_planta, codigo, qr_fisico, contrasena, activo, usuario_registro, fecha_registro) VALUES (1,'B10', 'MFIOESLNFIS', 'balanza10', 1, 'admin', sysdate());
+
+-- sd_tipo_pesaje
+INSERT INTO sd_tipo_pesaje (id_tipo_pesaje, nombre) VALUES (1, 'Pesaje vacío');
+INSERT INTO sd_tipo_pesaje (id_tipo_pesaje, nombre) VALUES (2, 'Pesaje lleno');
+
