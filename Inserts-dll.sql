@@ -200,14 +200,21 @@ INSERT INTO sd_incidencia (nombre, activo, usuario_registro, fecha_registro) VAL
 INSERT INTO sd_incidencia (nombre, activo, usuario_registro, fecha_registro) VALUES ('No contar con botiquín', 1, 'admin', sysdate());
 INSERT INTO sd_incidencia (nombre, activo, usuario_registro, fecha_registro) VALUES ('No contar con extintor', 1, 'admin', sysdate());
 
--- sd_zona_balanza
-INSERT INTO sd_zona_balanza (id_planta, codigo, qr_fisico, contrasena, activo, usuario_registro, fecha_registro) VALUES (1,'B1', 'FJSIDLFMSDL', 'balanza1', 1, 'admin', sysdate());
-INSERT INTO sd_zona_balanza (id_planta, codigo, qr_fisico, contrasena, activo, usuario_registro, fecha_registro) VALUES (1,'B2', 'FMESIOLFMN', 'balanza2', 1, 'admin', sysdate());
-INSERT INTO sd_zona_balanza (id_planta, codigo, qr_fisico, contrasena, activo, usuario_registro, fecha_registro) VALUES (1,'B3', 'DEMAIFLSKNE', 'balanza3', 1, 'admin', sysdate());
-INSERT INTO sd_zona_balanza (id_planta, codigo, qr_fisico, contrasena, activo, usuario_registro, fecha_registro) VALUES (1,'B4', 'MFEISKLFESMF', 'balanza4', 1, 'admin', sysdate());
-INSERT INTO sd_zona_balanza (id_planta, codigo, qr_fisico, contrasena, activo, usuario_registro, fecha_registro) VALUES (1,'B5', 'FNMISLKFSE', 'balanza5', 1, 'admin', sysdate());
-
 -- sd_tipo_pesaje
 INSERT INTO sd_tipo_pesaje (id_tipo_pesaje, nombre) VALUES (1, 'Pesaje vacío');
 INSERT INTO sd_tipo_pesaje (id_tipo_pesaje, nombre) VALUES (2, 'Pesaje lleno');
 
+-- sd_zona_balanza
+INSERT INTO sd_zona_balanza (id_tipo_pesaje, id_planta, codigo, contrasena, activo, usuario_registro, fecha_registro) VALUES (1, 1,'B1', 'balanza1', 1, 'admin', sysdate());
+INSERT INTO sd_zona_balanza (id_tipo_pesaje, id_planta, codigo, contrasena, activo, usuario_registro, fecha_registro) VALUES (1, 1,'B2', 'balanza2', 1, 'admin', sysdate());
+INSERT INTO sd_zona_balanza (id_tipo_pesaje, id_planta, codigo, contrasena, activo, usuario_registro, fecha_registro) VALUES (1, 1,'B3', 'balanza3', 1, 'admin', sysdate());
+INSERT INTO sd_zona_balanza (id_tipo_pesaje, id_planta, codigo, contrasena, activo, usuario_registro, fecha_registro) VALUES (2, 1,'B4', 'balanza4', 1, 'admin', sysdate());
+INSERT INTO sd_zona_balanza (id_tipo_pesaje, id_planta, codigo, contrasena, activo, usuario_registro, fecha_registro) VALUES (2, 1,'B5', 'balanza5', 1, 'admin', sysdate());
+INSERT INTO sd_zona_balanza (id_tipo_pesaje, id_planta, codigo, contrasena, activo, usuario_registro, fecha_registro) VALUES (2, 1,'B6', 'balanza6', 1, 'admin', sysdate());
+
+-- sd_canal_carga
+
+INSERT INTO sd_canal_carga (id_planta, codigo, qr_fisico, activo, fecha_registro, usuario_registro) VALUES (1, 'A1', 'FSJIUSKNVS', 1, 'admin', sysdate());
+INSERT INTO sd_canal_carga (id_planta, codigo, qr_fisico, activo, fecha_registro, usuario_registro) VALUES (1, 'A2', 'ENSJFIENSF', 1, 'admin', sysdate());
+INSERT INTO sd_canal_carga (id_planta, codigo, qr_fisico, activo, fecha_registro, usuario_registro) VALUES (1, 'A3', 'FNESFISKMV', 1, 'admin', sysdate());
+INSERT INTO sd_canal_carga (id_planta, codigo, qr_fisico, activo, fecha_registro, usuario_registro) VALUES (1, 'A4', 'NFESIFNML', 1, 'admin', sysdate());

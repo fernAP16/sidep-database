@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS sd_cola_pesaje;
-DROP TABLE IF EXISTS sd_tipo_pesaje;
 DROP TABLE IF EXISTS sd_zona_balanza;
+DROP TABLE IF EXISTS sd_tipo_pesaje;
 DROP TABLE IF EXISTS sd_cola_canal;
 DROP TABLE IF EXISTS sd_canal_carga;
 DROP TABLE IF EXISTS sd_turno_incidencia;
@@ -261,6 +261,8 @@ CREATE TABLE sd_planta (
     limite_sup_pesaje_antes INT NOT NULL,
     limite_inf_pesaje_despues INT NOT NULL,
     limite_sup_pesaje_despues INT NOT NULL,
+    qr_entrada VARCHAR(100) NULL,
+    qr_salida VARCHAR(100) NULL,
     activo INT NOT NULL,
     fecha_registro DATETIME NOT NULL,
     usuario_registro VARCHAR(100) NOT NULL,
@@ -371,8 +373,8 @@ CREATE TABLE sd_incidencia (
 
 CREATE TABLE sd_turno_incidencia (
     id_turno_incidencia INT NOT NULL AUTO_INCREMENT,
-    id_turno_revision INT NOT NULL,
-    id_incidencia INT NOT NULL,
+        id_turno_revision INT NOT NULL,
+        id_incidencia INT NOT NULL,
     activo INT NOT NULL,
     fecha_registro DATETIME NOT NULL,
     usuario_registro VARCHAR(100) NOT NULL,
@@ -391,11 +393,17 @@ CREATE TABLE sd_turno_incidencia (
         ON UPDATE NO ACTION
 );
 
+CREATE TABLE sd_tipo_pesaje (
+    id_tipo_pesaje INT NOT NULL AUTO_INCREMENT,
+    nombre VARCHAR(100) NOT NULL,
+    PRIMARY KEY(id_tipo_pesaje)
+);
+
 CREATE TABLE sd_zona_balanza (
     id_zona_balanza INT NOT NULL AUTO_INCREMENT,
+    id_tipo_pesaje INT NOT NULL,
     id_planta INT NOT NULL,
     codigo VARCHAR(10) NOT NULL,
-    qr_fisico VARCHAR(50) NOT NULL,
     contrasena VARCHAR(50) NOT NULL,
     activo INT NOT NULL,
     fecha_registro DATETIME NOT NULL,
@@ -403,6 +411,11 @@ CREATE TABLE sd_zona_balanza (
     fecha_actualizacion DATETIME NULL,
     usuario_actualizacion VARCHAR(100) NULL,
     PRIMARY KEY(id_zona_balanza),
+    CONSTRAINT zbl_tps_fk
+        FOREIGN KEY (id_tipo_pesaje)
+        REFERENCES sd_tipo_pesaje (id_tipo_pesaje)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION,
     CONSTRAINT zbl_pla_fk
         FOREIGN KEY (id_planta)
         REFERENCES sd_planta (id_planta)
@@ -410,17 +423,10 @@ CREATE TABLE sd_zona_balanza (
         ON UPDATE NO ACTION
 );
 
-CREATE TABLE sd_tipo_pesaje (
-    id_tipo_pesaje INT NOT NULL AUTO_INCREMENT,
-    nombre VARCHAR(100) NOT NULL,
-    PRIMARY KEY(id_tipo_pesaje)
-);
-
 CREATE TABLE sd_cola_pesaje (
     id_cola_pesaje INT NOT NULL AUTO_INCREMENT,
     id_despacho INT NOT NULL,
     id_zona_balanza INT NOT NULL,
-    id_tipo_pesaje INT NOT NULL,
     posicion INT NOT NULL,
     activo INT NOT NULL,
     fecha_registro DATETIME NOT NULL,
@@ -436,11 +442,6 @@ CREATE TABLE sd_cola_pesaje (
     CONSTRAINT cps_zbl_fk
         FOREIGN KEY (id_zona_balanza)
         REFERENCES sd_zona_balanza (id_zona_balanza)
-        ON DELETE NO ACTION
-        ON UPDATE NO ACTION,
-    CONSTRAINT cps_tps_fk
-        FOREIGN KEY (id_tipo_pesaje)
-        REFERENCES sd_tipo_pesaje (id_tipo_pesaje)
         ON DELETE NO ACTION
         ON UPDATE NO ACTION
 );
