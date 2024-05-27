@@ -213,8 +213,7 @@ INSERT INTO sd_zona_balanza (id_tipo_pesaje, id_planta, codigo, contrasena, acti
 INSERT INTO sd_zona_balanza (id_tipo_pesaje, id_planta, codigo, contrasena, activo, usuario_registro, fecha_registro) VALUES (2, 1,'B6', 'balanza6', 1, 'admin', sysdate());
 
 -- sd_canal_carga
-
-INSERT INTO sd_canal_carga (id_planta, codigo, qr_fisico, activo, fecha_registro, usuario_registro) VALUES (1, 'A1', 'FSJIUSKNVS', 1, 'admin', sysdate());
-INSERT INTO sd_canal_carga (id_planta, codigo, qr_fisico, activo, fecha_registro, usuario_registro) VALUES (1, 'A2', 'ENSJFIENSF', 1, 'admin', sysdate());
-INSERT INTO sd_canal_carga (id_planta, codigo, qr_fisico, activo, fecha_registro, usuario_registro) VALUES (1, 'A3', 'FNESFISKMV', 1, 'admin', sysdate());
-INSERT INTO sd_canal_carga (id_planta, codigo, qr_fisico, activo, fecha_registro, usuario_registro) VALUES (1, 'A4', 'NFESIFNML', 1, 'admin', sysdate());
+INSERT INTO sd_canal_carga (id_planta, codigo, qr_fisico, activo, usuario_registro, fecha_registro ) VALUES (1, 'A1', 'FSJIUSKNVS', 1, 'admin', sysdate());
+INSERT INTO sd_canal_carga (id_planta, codigo, qr_fisico, activo, usuario_registro, fecha_registro ) VALUES (1, 'A2', 'ENSJFIENSF', 1, 'admin', sysdate());
+INSERT INTO sd_canal_carga (id_planta, codigo, qr_fisico, activo, usuario_registro, fecha_registro ) VALUES (1, 'A3', 'FNESFISKMV', 1, 'admin', sysdate());
+INSERT INTO sd_canal_carga (id_planta, codigo, qr_fisico, activo, usuario_registro, fecha_registro ) VALUES (1, 'A4', 'NFESIFNML', 1, 'admin', sysdate());
